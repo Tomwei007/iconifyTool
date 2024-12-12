@@ -16,9 +16,21 @@ const iconName = icon.split(':')[1];
 
   const iconData = {};
   iconData[icon] = iconJson;
-
-  // console.log(iconDate);
   const exported = JSON.stringify(iconData, null, '\t') + '\n';
-  console.log(exported)
-  await fs.writeFile(`output/${iconSet}-${iconName}.json`, exported, 'utf8');
+
+  await fs.access('output').catch(()=>{
+    createDir();
+  })
+  createJsonFile(exported);
+  
 })()
+
+async function createDir() {
+  await fs.mkdir('output');
+  console.log('dir success!')
+}
+
+async function createJsonFile(exported) {
+  await fs.writeFile(`output/${iconSet}-${iconName}.json`, exported, 'utf8');
+  console.log('file success!')
+}

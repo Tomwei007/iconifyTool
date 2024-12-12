@@ -1,4 +1,10 @@
+#### Project setup
+```
+yarn install
+```
+
 #### 根据icon name 生成json文件
+
 
 - 例如 'ant-design:account-book-filled'
 ```
